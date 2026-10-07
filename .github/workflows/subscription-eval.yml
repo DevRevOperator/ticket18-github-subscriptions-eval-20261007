@@ -1,0 +1,11 @@
+name: Subscription eval
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  required-eval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify synthetic fixture
+        run: test "$(tr -d '\n' < fixture.txt)" = "pass"
